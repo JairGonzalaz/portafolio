@@ -1,0 +1,19 @@
+
+<input type="checkbox" id="menu-toggle">
+<label for="menu-toggle" class="menu-button">Menú</label>
+<nav class="site-navigation">
+    <div class="nav-brand">
+        <a href="{% url 'portafolio:landing_page' %}">{{personal_info.user.first_name}}</a>
+    </div>
+    <ul class="nav-links">
+        <li><a href="#projects">Proyectos</a></li>
+        <li><a href="#experience">Experiencia</a></li>
+        <li><a href="#skills">Habilidades</a></li>
+        <li><a href="#contact">Contacto</a></li>
+        <li>
+            <a href="{{ personal_info.github_url }}" target="_blank" rel="noopener noreferrer">
+                GitHub
+            </a>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Meta tags básicos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio profesional de Jair Jiménez - Desarrollador Python/Django">
+    
+    <!-- SEO tags -->
+    <meta name="author" content="[Tu Nombre]">
+    <meta name="keywords" content="python, django, desarrollo web, automatización, portfolio">
+    
+    <!-- Open Graph tags para compartir en redes sociales 
+    
+    
+    -->
+    <meta property="og:title" content="{% block og_title %}Portafolio de [Tu Nombre]{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Desarrollador Python/Django especializado en automatización y sistemas empresariales{% endblock %}">
+    
+    <meta property="og:image" content="{% block og_image %}{% static 'img/profile.jpg' %}{% endblock %}">
+    
+    <!-- Título dinámico para cada página -->
+    <title>{% block title %}Portafolio{% endblock %} | [Tu Nombre]</title>
+
+    <!-- Favicon 
+     
+      <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    -->
+  
+    
+    <!-- CSS -->
+    {% block pre_css %}{% endblock %}
+    <!-- CSS base -->
+     
+    <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <!-- CSS específico de la página -->
+    {% block css %}
+   <style>
+
+   
+   </style>
+    {% endblock %}
+    
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="{% static 'fonts/main-font.woff2' %}" as="font" type="font/woff2" crossorigin>
+</head>
+<body class="{% block body_class %}{% endblock %}">
+    <!-- Header -->
+    <header class="site-header">
+        {% include 'includes/navigation.html' %}
+    </header>
+
+    <!-- Main content -->
+    <main class="main-content">
+       
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        {% include 'includes/footer.html' %}
+    </footer>
+
+    <!-- JavaScript -->
+    <!-- Scripts base -->
+    <script src="{% static 'js/base.js' %}" defer></script>
+    <!-- Scripts específicos de la página -->
+    {% block js %}{% endblock %}
+    {% comment %}
+
+    <!-- Analytics (opcional) -->
+    {% if not debug %}
+        {% include 'includes/analytics.html' %}
+    {% endif %}
+    {%endcomment %}
+</body>
+</html>

@@ -1,0 +1,154 @@
+.site-header{
+    position: absolute;
+    top: 0;
+    position: sticky;
+    background-image: url('../img/backgroud-header.png');
+    
+}
+.menu-button, #menu-toggle {
+    display: none;
+  }
+ 
+  
+ 
+  
+.site-navigation {
+    display: none;
+    padding: 1rem 2rem;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-bottom: solid 1px #0f3c43;
+    background-image: url('static/img/backgroud-header.png');
+   
+}
+
+.nav-brand a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2d3748;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    color: #bab5b5;
+}
+
+.nav-brand a:hover {
+    
+      color: #bab5b5;
+}
+
+
+
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+.nav-links li a {
+    color: #bab5b5;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #bab5b5;
+    transition: width 0.3s ease;
+}
+
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* Versión para móviles (menos de 768px) */
+@media (max-width: 767px) {
+    .site-header {
+      position: relative;
+      background-image: none;
+      background-image: url('../img/backgroud-header.png');
+    }
+    .menu-button {
+        display: block;
+        padding: 10px;
+        background-image: url('../img/backgroud-header.png');
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      .site-navigation {
+        display: none;
+      }
+      #menu-toggle{
+        display: none;
+      }
+      #menu-toggle:checked + .menu-button + .site-navigation {
+        display: block;
+      }
+    .site-navigation {
+      padding: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .nav-brand a {
+      font-size: 1.2rem;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .nav-links li a {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Versión para tabletas (entre 768px y 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .site-header {
+      background-image: none;
+      background-image: url('../img/backgroud-header.png');
+    }
+  
+    .site-navigation {
+      padding: 1rem 2rem;
+      flex-direction: row;
+      align-items: center;
+    }
+  
+    .nav-brand a {
+      font-size: 1.5rem;
+    }
+  
+    .nav-links {
+      flex-direction: row;
+      gap: 2rem;
+    }
+  
+    .nav-links li a {
+      font-size: 1rem;
+    }
+  }

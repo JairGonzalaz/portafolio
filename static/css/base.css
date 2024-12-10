@@ -1,0 +1,18 @@
+body{
+    background: rgb(7,30,33);
+background: linear-gradient(142deg, rgba(7,30,33,1) 12%, rgba(22,26,29,1) 74%);
+    padding-top: 50px;
+    color: #bab5b5; 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+    font-family: 'Courier New', Courier, monospace;
+}
+.main-content{
+    text-align: left;
+    margin: 0 auto;
+    width: 90vw;
+}
+footer{
+}

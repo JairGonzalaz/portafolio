@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Portfolio - Jair Jimenez{% endblock %}
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/landing.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+   <div class="container">
+   
+       <h1>{{personal_info.user.first_name}} {{personal_info.user.last_name}}</h1>
+       <p>{{ personal_info.professional_summary|linebreaks }}</p>
+   </div>
+   <div class="container-img">
+   
+    <img src="{{ personal_info.image.url }}" alt="foto">
+</div>
+</section>
+<!-- Experience Section -->
+<section class="experience">
+    <h2>Experiencia Laboral</h2>
+    {% for exp in work_experience %}
+    <div class="experience-item">
+        <h3>{{ exp.company }} | {{ exp.position }} | {{ exp.start_date|date:"M Y" }} - {% if exp.is_current %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}</h3>
+        <h4>Logros</h4>
+        <p>{{ exp.key_achievements | linebreaks }}</p>
+        <h4>Tecnologias</h4>
+        <p>{{ exp.technologies_used | linebreaks }}</p>
+    </div>
+    {% endfor %}
+ </section>
+<!-- Skills Section -->
+<section class="skills">
+   <h2>Habilidades Técnicas
+   </h2>
+   {% for category, skills in skills_by_category.items %}
+   <div class="skill-category">
+       <h3>{{ category }}</h3>
+       <div class="skills-grid">
+           {% for skill in skills %}
+           <div class="skill-item">
+               <p>{{ skill.name }}</p>
+               <div class="skill-level" data-level="{{ skill.proficiency_level }}"></div>
+           </div>
+           {% endfor %}
+       </div>
+   </div>
+   {% endfor %}
+</section>
+
+<!-- Projects Section -->
+<section class="projects">
+   <h2>Featured Projects</h2>
+   <div class="projects-grid">
+       {% for project in featured_projects %}
+       <div class="project-card">
+           <h3>{{ project.title }}</h3>
+           <p>{{ project.description }}</p>
+           <a href="{% url 'portafolio:project_detail' project.slug %}" class="btn">View Details</a>
+       </div>
+       {% endfor %}
+   </div>
+</section>
+
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/landing.js' %}"></script>
+{% endblock %}
